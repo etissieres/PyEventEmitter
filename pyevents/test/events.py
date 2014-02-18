@@ -22,6 +22,22 @@ class TestEventEmitter(test.TestCase):
         self.em.emit('hello', 'toto', age=22)
         self.assertEqual(times_hello_emitted, 2)
 
+    def test_add_once_listener(self):
+        times_hello_emitted = 0
+
+        @events.once(event_emitter=self.em, event='hello')
+        def hello(name, age):
+            nonlocal times_hello_emitted
+            times_hello_emitted += 1
+            self.assertEqual(name, 'toto')
+            self.assertEqual(age, 22)
+
+        self.em.once('hello', hello)
+        self.assertEqual(self.em.count('hello'), 2)
+        self.em.emit('hello', 'toto', age=22)
+        self.assertEqual(times_hello_emitted, 2)
+        self.assertEqual(self.em.count('hello'), 0)
+
     def test_remove_listener(self):
         times_hello_emitted = 0
 
