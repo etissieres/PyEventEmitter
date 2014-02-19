@@ -2,6 +2,10 @@
 
 Python events library.
 
+# Installation
+
+    $ pip install PyEventEmitter
+
 # How to use
 
 The library provides an EventEmitter class.
