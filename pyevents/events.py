@@ -38,15 +38,15 @@ class EventEmitter(object):
         return len(self._events[event]) if event in self._events else 0
 
 
-def on(event_emitter, event):
+def on(emitter, event):
     def decorator(func):
-        event_emitter.on(event, func)
+        emitter.on(event, func)
         return func
     return decorator
 
 
-def once(event_emitter, event):
+def once(emitter, event):
     def decorator(func):
-        event_emitter.once(event, func)
+        emitter.once(event, func)
         return func
     return decorator

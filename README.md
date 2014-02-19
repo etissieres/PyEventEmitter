@@ -26,7 +26,7 @@ import pyevents.events as events
 
 em = events.EventEmitter()
 
-@events.on(event_emitter=em, event='hello')
+@events.on(emitter=em, event='hello')
 def hello(who):
     print('Hello {}'.format(who))
 

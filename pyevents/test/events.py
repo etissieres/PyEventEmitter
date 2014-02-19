@@ -10,7 +10,7 @@ class TestEventEmitter(test.TestCase):
     def test_add_listener(self):
         times_hello_emitted = 0
 
-        @events.on(event_emitter=self.em, event='hello')
+        @events.on(emitter=self.em, event='hello')
         def hello(name, age):
             nonlocal times_hello_emitted
             times_hello_emitted += 1
@@ -25,7 +25,7 @@ class TestEventEmitter(test.TestCase):
     def test_add_once_listener(self):
         times_hello_emitted = 0
 
-        @events.once(event_emitter=self.em, event='hello')
+        @events.once(emitter=self.em, event='hello')
         def hello(name, age):
             nonlocal times_hello_emitted
             times_hello_emitted += 1
@@ -55,7 +55,7 @@ class TestEventEmitter(test.TestCase):
     def test_remove_all_listener(self):
         times_hello_emitted = 0
 
-        @events.on(event_emitter=self.em, event='hello')
+        @events.on(emitter=self.em, event='hello')
         def hello():
             nonlocal times_hello_emitted
             times_hello_emitted += 1
