@@ -1,5 +1,5 @@
 import unittest as test
-import pyevents.events as events
+import py_event_emitter as events
 
 
 class TestEventEmitter(test.TestCase):

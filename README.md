@@ -1,4 +1,4 @@
-# PyEvents
+# PyEventEmitter
 
 Python events library.
 
@@ -8,7 +8,7 @@ The library provides an EventEmitter class.
 This class let you bind listeners to events and trigger events.
 
 ```python
-import pyevents.events as events
+import py_event_emitter.events as events
 
 em = events.EventEmitter()
 
@@ -22,7 +22,7 @@ em.emit('hello', who='World')  # prints Hello World
 You can also use `on` decorator :
 
 ```python
-import pyevents.events as events
+import py_event_emitter.events as events
 
 em = events.EventEmitter()
 
@@ -36,7 +36,7 @@ em.emit('hello', who='World')  # prints Hello World
 Using `once` instead of `on` may be usefull if you want your listener to be called once :
 
 ```python
-import pyevents.events as events
+import py_event_emitter.events as events
 
 em = events.EventEmitter()
 
