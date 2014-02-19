@@ -40,3 +40,6 @@ nosetests.xml
 
 # virtualenv
 venv/
+
+# distutils
+MANIFEST
