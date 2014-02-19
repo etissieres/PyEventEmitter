@@ -2,14 +2,9 @@ __all__ = ['EventEmitter', 'on', 'once']
 
 
 class EventEmitter(object):
-    event_emitters = []
 
     def __init__(self):
-        EventEmitter.event_emitters.append(self)
         self._events = {}
-
-    def __del__(self):
-        EventEmitter.event_emitters.remove(self)
 
     def on(self, event, listener):
         if not event in self._events:

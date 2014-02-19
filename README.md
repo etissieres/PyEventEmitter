@@ -51,3 +51,48 @@ em.once('hello', hello)
 em.emit('hello', who='World')  # prints Hello World
 em.emit('hello', who='World')  # nothing happens
 ```
+
+Of course, their is also a decorator for this :
+
+```python
+import py_event_emitter.events as events
+
+em = events.EventEmitter()
+
+@events.once(emitter=em, event='hello')
+def hello(who):
+    print('Hello {}'.format(who))
+
+em.emit('hello', who='World')  # prints Hello World
+```
+
+You can remove a listener bound to an event :
+
+```python
+import py_event_emitter.events as events
+
+em = events.EventEmitter()
+
+def hello(who):
+    print('Hello {}'.format(who))
+
+em.on('hello', hello)
+em.remove('hello', hello)
+em.emit('hello', who='World')  # nothing happens
+```
+
+You can also remove all listeners bound to an event thanks to `remove_all`.
+
+The `count` method returns the number of listeners bound to an event :
+
+```python
+import py_event_emitter.events as events
+
+em = events.EventEmitter()
+
+def hello(who):
+    print('Hello {}'.format(who))
+
+em.on('hello', hello)
+print(em.count('hello'))  # prints 1
+```
