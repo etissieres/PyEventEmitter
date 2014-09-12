@@ -18,7 +18,7 @@ listeners to events and trigger events.
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 
@@ -32,7 +32,7 @@ You can also use ``on`` decorator :
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 
@@ -47,7 +47,7 @@ listener to be called once :
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 
@@ -62,7 +62,7 @@ Of course, their is also a decorator for this :
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 
@@ -76,7 +76,7 @@ You can remove a listener bound to an event :
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 
@@ -94,7 +94,7 @@ The ``count`` method returns the number of listeners bound to an event :
 
 .. code:: python
 
-    import py_event_emitter.events as events
+    import event_emitter as events
 
     em = events.EventEmitter()
 

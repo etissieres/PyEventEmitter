@@ -1,5 +1,5 @@
 import unittest as test
-import py_event_emitter as events
+import event_emitter as events
 
 
 class TestEventEmitter(test.TestCase):
@@ -66,3 +66,7 @@ class TestEventEmitter(test.TestCase):
         self.assertEqual(self.em.count('hello'), 0)
         self.em.emit('hello')
         self.assertEqual(times_hello_emitted, 0)
+
+
+if __name__ == '__main__':
+    test.main()
