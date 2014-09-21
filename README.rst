@@ -1,7 +1,7 @@
 PyEventEmitter
 ==============
 
-Python events library.
+Python events library, heavily inspired by Node.js' EventEmitter.
 
 Installation
 ============
@@ -58,7 +58,7 @@ listener to be called once :
     em.emit('hello', who='World')  # prints Hello World
     em.emit('hello', who='World')  # nothing happens
 
-Of course, their is also a decorator for this :
+Of course, there is also a decorator for this :
 
 .. code:: python
 
