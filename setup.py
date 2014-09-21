@@ -6,16 +6,17 @@ with open('README.rst') as file:
     long_description = file.read()
 
 classifiers = [
-    "Programming Language :: Python",
-    "Development Status :: 4 - Beta",
-    "License :: OSI Approved",
-    "Natural Language :: French",
-    "Operating System :: OS Independent",
-    "Topic :: Utilities",
+    'Programming Language :: Python :: 3',
+    'Development Status :: 5 - Production/Stable',
+    'License :: OSI Approved',
+    'Intended Audience :: Developers',
+    'Natural Language :: French',
+    'Operating System :: OS Independent',
+    'Topic :: Utilities',
 ]
 
 setup(name='PyEventEmitter',
-      version='1.0.0',
+      version='1.0.1',
       description='Simple python events library',
       long_description=long_description,
       author='Etienne Tissieres',
