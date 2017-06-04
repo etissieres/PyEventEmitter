@@ -52,6 +52,20 @@ class TestEventEmitter(test.TestCase):
         self.em.emit('hello')
         self.assertEqual(times_hello_emitted, 0)
 
+    def test_remove_once_listener(self):
+        times_hello_emitted = 0
+
+        def hello():
+            nonlocal times_hello_emitted
+            times_hello_emitted += 1
+
+        self.em.once('hello', hello)
+        self.assertEqual(self.em.count('hello'), 1)
+        self.em.remove('hello', hello)
+        self.assertEqual(self.em.count('hello'), 0)
+        self.em.emit('hello')
+        self.assertEqual(times_hello_emitted, 0)
+
     def test_remove_all_listener(self):
         times_hello_emitted = 0
 

@@ -16,7 +16,7 @@ classifiers = [
 ]
 
 setup(name='PyEventEmitter',
-      version='1.0.3',
+      version='1.0.4',
       description='Simple python events library',
       long_description=long_description,
       author='Etienne Tissieres',
