@@ -87,6 +87,10 @@ You can remove a listener bound to an event :
     em.remove('hello', hello)
     em.emit('hello', who='World')  # nothing happens
 
+Please note that this method will remove at moste one listener from the list.
+If the same listener was bound multiple times to the event, this method has to
+be invoked multiple times to remove all the occurences.
+
 You can also remove all listeners bound to an event thanks to
 ``remove_all``.
 
