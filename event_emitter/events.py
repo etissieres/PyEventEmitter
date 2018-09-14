@@ -1,5 +1,24 @@
 __all__ = ['EventEmitter', 'on', 'once']
 
+import types
+
+
+class ListenerWrapper(object):
+
+    def __init__(self, listener, is_once=False):
+        self.listener = listener
+        self.is_once = is_once
+
+    def __call__(self, *args, **kwargs):
+        self.listener(*args, **kwargs)
+
+    def __eq__(self, other):
+        if isinstance(other, ListenerWrapper):
+            return other.listener == self.listener
+        if isinstance(other, types.FunctionType):
+            return other == self.listener
+        return False
+
 
 class EventEmitter(object):
 
@@ -7,20 +26,22 @@ class EventEmitter(object):
         self._events = {}
 
     def on(self, event, listener):
-        if not event in self._events:
-            self._events[event] = []
-        self._events[event].append(listener)
+        self._on(event, ListenerWrapper(listener))
 
     def once(self, event, listener):
-        listener.is_once = True
-        self.on(event, listener)
+        self._on(event, ListenerWrapper(listener, is_once=True))
+
+    def _on(self, event, listener_wrapper):
+        if not event in self._events:
+            self._events[event] = []
+        self._events[event].append(listener_wrapper)
 
     def emit(self, event, *args, **kwargs):
         if event in self._events:
             # 'once' may delete items while iterating over listeners -> we use a copy
             listeners = self._events[event][:]
             for listener in listeners:
-                if hasattr(listener, 'is_once') and listener.is_once:
+                if listener.is_once:
                     self.remove(event, listener)
                 listener(*args, **kwargs)
 
