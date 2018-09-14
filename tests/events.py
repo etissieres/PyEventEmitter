@@ -81,6 +81,28 @@ class TestEventEmitter(test.TestCase):
         self.em.emit('hello')
         self.assertEqual(times_hello_emitted, 0)
 
+    def test_listener_reusability(self):
+        times_hello_emitted = 0
+        
+        em1 = events.EventEmitter()
+        em2 = events.EventEmitter()
+
+        def hello():
+            nonlocal times_hello_emitted
+            times_hello_emitted += 1
+
+        em1.once('hello', hello)
+        em2.on('hello', hello)
+
+        em1.emit('hello')
+        self.assertEqual(times_hello_emitted, 1)
+        em2.emit('hello')
+        self.assertEqual(times_hello_emitted, 2)
+        em1.emit('hello')
+        self.assertEqual(times_hello_emitted, 2)
+        em2.emit('hello')
+        self.assertEqual(times_hello_emitted, 3)
+
 
 if __name__ == '__main__':
     test.main()

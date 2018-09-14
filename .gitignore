@@ -43,3 +43,6 @@ venv/
 
 # distutils
 MANIFEST
+
+# Misc
+/.vscode/
