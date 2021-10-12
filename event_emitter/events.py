@@ -1,10 +1,9 @@
-__all__ = ['EventEmitter', 'on', 'once']
+__all__ = ["EventEmitter", "on", "once"]
 
 import types
 
 
 class ListenerWrapper(object):
-
     def __init__(self, listener, is_once=False):
         self.listener = listener
         self.is_once = is_once
@@ -21,7 +20,6 @@ class ListenerWrapper(object):
 
 
 class EventEmitter(object):
-
     def __init__(self):
         self._events = {}
 
@@ -63,6 +61,7 @@ def on(emitter, event):
     def decorator(func):
         emitter.on(event, func)
         return func
+
     return decorator
 
 
@@ -70,4 +69,5 @@ def once(emitter, event):
     def decorator(func):
         emitter.once(event, func)
         return func
+
     return decorator
